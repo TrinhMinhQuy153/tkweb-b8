@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tìm số lớn nhất và nhỏ nhất</title>
+</head>
+<body>
+
+    <h1>Nhập vào một dãy số để tìm số lớn nhất và nhỏ nhất</h1>
+
+    <label for="numbers">Nhập dãy số (cách nhau bằng dấu phẩy): </label>
+    <input type="text" id="numbers" placeholder="Ví dụ: 10, 5, 15, 8, 20" />
+    <button onclick="findMaxMin()">Tìm</button>
+
+    <p id="result"></p>
+
+    <script>
+        function findMaxMin() {
+            let input = document.getElementById('numbers').value;
+            let numbers = input.split(',').map(Number); 
+
+            if (numbers.length === 0 || numbers.some(isNaN)) {
+                document.getElementById('result').innerHTML = "Vui lòng nhập một dãy số hợp lệ.";
+                return;
+            }
+
+            let maxNumber = Math.max(...numbers);
+            let minNumber = Math.min(...numbers);
+
+            document.getElementById('result').innerHTML = 
+                `Số lớn nhất là: ${maxNumber}<br>Số nhỏ nhất là: ${minNumber}`;
+        }
+    </script>
+
+</body>
+</html>
